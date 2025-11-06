@@ -1,0 +1,18 @@
+# YouTube URL to download audio from
+youtube_url: "https://www.youtube.com/watch?v=4JX7LkvRPpI"
+
+# Output directory for the split audio files
+output_dir: "data/jazz_jane_4JX7LkvRPpI"
+
+# Timestamps for splitting the audio
+# Format: ["MM:SS", "Segment Name"]
+timestamps:
+  - ["0:05", "Autumn Leaves"]
+  - ["6:36", "The Grass Withers and the Flowers Fall (Euiju Cheong)"]
+  - ["12:59", "I Fall in Love Too Easily"]
+  - ["19:49", "intro (improv)"]
+  - ["22:35", "I'll Be Seeing You"]
+  - ["27:50", "Falling Leaves (Euiju Cheong)"]
+  - ["35:11", "Very Early (Bill Evans)"]
+  # Add more timestamps as needed
+  # Format: ["MM:SS" or "H:MM:SS", "Segment Name"]
