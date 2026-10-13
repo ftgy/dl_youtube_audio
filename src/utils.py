@@ -51,12 +51,17 @@ def split_audio(input_audio, timestamps, output_folder):
     audio = AudioSegment.from_file(input_audio)
     os.makedirs(output_folder, exist_ok=True)
 
-    for i in range(len(timestamps) - 1):
+    for i in range(len(timestamps)):
         start_time, name = timestamps[i]
-        end_time, _ = timestamps[i + 1]  # Next timestamp as end time
-
         start_ms = time_to_milliseconds(start_time)
-        end_ms = time_to_milliseconds(end_time)
+
+        # Next timestamp as end time; the last segment runs to the end of the audio
+        if i + 1 < len(timestamps):
+            end_time, _ = timestamps[i + 1]
+            end_ms = time_to_milliseconds(end_time)
+        else:
+            end_ms = len(audio)
+            end_time = "end"
 
         # Clean up the name to be a valid filename
         safe_name = "".join(c if c.isalnum() or c in " -_" else "_" for c in name).strip()
@@ -99,6 +104,6 @@ def save_config(config, output_dir):
     file_path = Path(output_dir) / "config.yaml"
 
     with open(file_path, "w", encoding="utf-8") as f:
-        yaml.safe_dump(config, f)
+        yaml.safe_dump(config, f, sort_keys=False)
 
     return file_path

@@ -1,4 +1,4 @@
 ffmpeg==1.4
 pydub==0.25.1
 PyYAML==6.0.3
-yt-dlp==2025.10.22
+yt-dlp
